@@ -1,2 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
-*{color:red}
+:root {
+  --primary-color: #0e0c5a;
+  --primary-100: #e3e2ff;
+  --primary-color-text: #ffffff;
+  --primary-color-hover: #232070;
+  --text-color: #0e0c5a;
+  --text-color-secondary: #6c757d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Proxima Nova", -apple-system, "Helvetica Neue", Helvetica,
+    Roboto, Arial, sans-serif;
+}
