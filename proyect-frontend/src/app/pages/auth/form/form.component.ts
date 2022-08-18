@@ -3,6 +3,8 @@ import { TypeForm } from './../../../shared/interfaces/authForm';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -13,10 +15,13 @@ export class FormComponent implements OnInit {
   authForm!: FormGroup;
   @Input() options!: TypeForm;
 
+  response: any;
+
   public readFiles = readFiles;
 
   constructor(
     private readonly fb: FormBuilder,
+    private _authservice: AuthService,
     private readonly router: Router
   ) {}
 
@@ -34,7 +39,6 @@ export class FormComponent implements OnInit {
     } else {
       this.authForm = this.fb.group({
         name: ['', Validators.required],
-        username: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
       });
@@ -46,11 +50,35 @@ export class FormComponent implements OnInit {
     console.log(credentials);
 
     if (this.options.id === 'sign-in') {
-      localStorage.setItem('session_t', 'token');
-      this.router.navigate(['/']);
+      await this._authservice
+        .signIn(credentials)
+        .then((res) => {
+          console.log(res);
+          this.redirectUser();
+          this.response = res;
+        })
+        .catch((error) => {
+          console.log(error);
+          return throwError(() => new Error(error));
+        });
     } else {
-      localStorage.setItem('session_t', 'token');
-      this.router.navigate(['/']);
+      await this._authservice
+        .signUp(credentials)
+        .then((res) => {
+          console.log(res);
+
+          this.redirectUser();
+          this.response = res;
+        })
+        .catch((error) => {
+          console.log(error);
+
+          return throwError(() => new Error(error));
+        });
     }
+  }
+
+  private redirectUser(): void {
+    this.router.navigate(['/home']);
   }
 }

@@ -16,6 +16,8 @@ import { PersonalDataComponent } from './pages/user/personal-data/personal-data.
 import { PreferencesComponent } from './pages/user/preferences/preferences.component';
 import { MainAppComponent } from './pages/main-app/main-app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { TopbarComponent } from './shared/components/topbar/topbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +30,15 @@ import { MainAppComponent } from './pages/main-app/main-app.component';
     PreferencesComponent,
     PersonalDataComponent,
     DetachablesComponent,
-    MainAppComponent
+    MainAppComponent,
+    TopbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
