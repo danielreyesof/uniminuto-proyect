@@ -1,16 +1,17 @@
 <div class="container">
-
-    <div class="options">
-
-
-        <div class="vertical-menu">
-            <a *ngFor="let item of menuItems" [routerLink]="item.routerLink" [routerLinkActive]="'active'"
-                class="vertical-menu-item"><i class="{{item.icon}}"></i>{{item.label}}</a>
-        </div>
-
+  <div class="options">
+    <div class="vertical-menu" style="width: 250px">
+      <a
+        *ngFor="let item of menuItems"
+        [routerLink]="item.routerLink"
+        [routerLinkActive]="'active'"
+        class="vertical-menu-item"
+        ><i class="{{ item.icon }}"></i>{{ item.label }}</a
+      >
     </div>
+  </div>
 </div>
 
 <div>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

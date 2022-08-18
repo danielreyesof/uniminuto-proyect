@@ -1,71 +1,67 @@
 .options {
-    position: relative;
-    padding: 8px rem;
-    margin-top: 0.25rem;
-    border-radius: 0.5rem;
-    background: #fff;
-    font-size: 95%;
+  position: relative;
+  padding: 8px rem;
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  font-size: 95%;
 }
 
 .options .option {
-    display: grid;
-    height: 2rem;
-    cursor: pointer;
-    padding: 8px 0.5rem;
-    border-radius: 0.5rem;
-    align-items: center;
-    background-color: #fff;
-    width: 100%;
+  display: grid;
+  height: 2rem;
+  cursor: pointer;
+  padding: 8px 0.5rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
 }
 
 .options .option:hover {
-    background: #e3e2ff;
-  }
+  background: #e3e2ff;
+}
 
-  .container{
-    display: flex;
-    width: 250px
-  }
+.container {
+  display: flex;
+  width: 250px;
+}
 
-  
-
-
-  /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 * {
-    font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
 }
 
 a {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 body {
-    font-size: 80%;
-    font-weight: 500;
+  font-size: 80%;
+  font-weight: 500;
 }
 
-
 .vertical-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .vertical-menu .vertical-menu-item {
-    color: #888;
-    text-decoration: none;
-    padding: 1rem 1rem;
-    border-bottom: 1px solid #ccc;
-    transition: all 0.5s;
+  color: #888;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #ccc;
+  transition: all 0.5s;
 }
 
 .vertical-menu .vertical-menu-item i {
-    margin-right: 0.8rem;
+  margin-right: 0.8rem;
 }
 
 .vertical-menu .vertical-menu-item.active,
 .vertical-menu .vertical-menu-item:hover {
-    background-color: #eee;
-    padding: 1rem 1.5rem;
+  background-color: #eee;
+  padding: 1rem 1.5rem;
 }
