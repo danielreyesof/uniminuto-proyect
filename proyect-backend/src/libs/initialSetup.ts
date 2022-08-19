@@ -1,7 +1,5 @@
 import { readFileFs, writeFileFs } from './../utils/readWriteFile';
-import { promises as fsPromises } from 'fs';
-import * as path from 'path';
-import { generateUUID } from '../utils/generateUUID';
+import { generateUUID } from './../utils/generateUUID';
 
 export const ROLES = ['client', 'admin', 'employee', 'developer'];
 
