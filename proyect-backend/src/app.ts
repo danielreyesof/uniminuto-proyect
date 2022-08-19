@@ -4,6 +4,7 @@ import cors from 'cors';
 import pkg from '../package.json';
 import { readFile } from './libs/initialSetup';
 import authRoutes from './routes/auth.routes';
+import pdfRoutes from './routes/pdf.routes';
 
 const app = express();
 readFile();
@@ -25,5 +26,6 @@ app.get('/', (_req: any, res) => {
 });
 
 app.use('/api/auth/', authRoutes);
+app.use('/api/pdf/', pdfRoutes);
 
 export default app;
