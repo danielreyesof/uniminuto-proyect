@@ -1,1 +1,107 @@
-<p>personal-data works!</p>
+<div class="container">
+  <div class="row-12">
+    <div class="container-flex">
+      <div class="row">
+        <div class="col m-2 py-4 col-offset-2">
+          <h1 class="mb-1">Mis datos Personales</h1>
+          <p class="mt-0">A continuación se mostrarán sus datos de usuario.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-card row-12">
+    <div class="px-4 col-4" style="margin-top: 25px">
+      <form [formGroup]="personalDataForm">
+        <div class="field col-4 md:col-4">
+          <label>Nombre</label><br />
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>Apellido</label><br />
+          <input
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>Email</label><br />
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="px-4 col-4" style="margin-top: 25px">
+      <form [formGroup]="personalDataForm">
+        <div class="field col-4 md:col-4">
+          <label>ID</label><br />
+          <input
+            type="text"
+            formControlName="employeeId"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>Cargo</label><br />
+          <input
+            type="text"
+            formControlName="position"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>Eps</label><br />
+          <input
+            type="text"
+            formControlName="eps"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="px-4 col-4" style="margin-top: 25px">
+      <form [formGroup]="personalDataForm">
+        <div class="field col-4 md:col-4">
+          <label>Banco</label><br />
+          <input
+            type="text"
+            formControlName="bank"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>No. Cuenta</label><br />
+          <input
+            type="text"
+            formControlName="backAccount"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="field col-4 md:col-4">
+          <label>Fondo Pension</label><br />
+          <input
+            type="text"
+            formControlName="pensionFund"
+            class="form-control"
+            [readOnly]="true"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,22 @@ export class DbService {
     return this._http.get<T>(URL, { headers: headers });
   }
 
+  getQueryHeaders<T>(path: string, allData: any) {
+    let headerContent = allData.headerContent;
+
+    const URL = `${this._coreservice.urlServicesBD}/${path}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: '*/*',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Expose-Headers': '*',
+    }).set('authorization', headerContent);
+    return this._http.get<T>(URL, { headers: headers });
+  }
+
   getQueryById(path: string, id: any) {
     const URL = `${this._coreservice.urlServicesBD}/${path}/${id}`;
     const headers = new HttpHeaders({

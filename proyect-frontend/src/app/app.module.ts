@@ -18,6 +18,9 @@ import { MainAppComponent } from './pages/main-app/main-app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
+
+import { TableModule } from 'primeng/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,7 @@ import { TopbarComponent } from './shared/components/topbar/topbar.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
