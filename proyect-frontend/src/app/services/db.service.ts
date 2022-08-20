@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CoreService } from './core.service';
 
 @Injectable({
@@ -8,6 +8,11 @@ import { CoreService } from './core.service';
 })
 export class DbService {
   constructor(private _http: HttpClient, private _coreservice: CoreService) {}
+
+  public setUser() {
+    const session = localStorage.getItem('token');
+    return session;
+  }
 
   getQuery<T>(path: string) {
     const URL = `${this._coreservice.urlServicesBD}/${path}`;
@@ -23,9 +28,7 @@ export class DbService {
     return this._http.get<T>(URL, { headers: headers });
   }
 
-  getQueryHeaders<T>(path: string, allData: any) {
-    let headerContent = allData.headerContent;
-
+  getQueryHeaders<T>(path: string) {
     const URL = `${this._coreservice.urlServicesBD}/${path}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -35,7 +38,7 @@ export class DbService {
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Expose-Headers': '*',
-    }).set('authorization', headerContent);
+    }).set('authorization', `${this.setUser()}`);
     return this._http.get<T>(URL, { headers: headers });
   }
 
@@ -63,7 +66,7 @@ export class DbService {
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Expose-Headers': '*',
-    });
+    }).set('authorization', `${this.setUser()}`);
     return this._http.post<T>(URL, postData, { headers: headers });
   }
 
@@ -100,6 +103,24 @@ export class DbService {
       'Access-Control-Expose-Headers': '*',
     });
     return this._http.delete<T>(URL, { headers: headers });
+  }
+
+  public addService(table: string, objFields: any) {
+    return this.postQuery(`${table}`, objFields).pipe(
+      map((data: any) => {
+        return data;
+      })
+    );
+  }
+
+  public readService(table: string) {
+    let vm = this;
+
+    return this.getQueryHeaders(`${table}`).pipe(
+      map((data: any) => {
+        return data;
+      })
+    );
   }
 
   postQueryLogout(route: string, allData: any, filters?: string) {

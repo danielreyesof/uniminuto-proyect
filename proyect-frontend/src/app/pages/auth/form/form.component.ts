@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { throwError } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-form',
@@ -22,7 +23,8 @@ export class FormComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private _authservice: AuthService,
-    private readonly router: Router
+    private readonly router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -91,33 +93,47 @@ export class FormComponent implements OnInit {
       eps: eps[this.getRandomInt(5)],
       pensionFund: pensiones[this.getRandomInt(2)],
     };
+    console.log(credentials);
 
-    if (this.options.id === 'sign-in') {
-      await this._authservice
-        .signIn(credentials)
-        .then((res) => {
-          console.log(res);
-          this.redirectUser();
-          this.response = res;
-        })
-        .catch((error) => {
-          console.log(error);
-          return throwError(() => new Error(error));
-        });
+    if (credentials.firstName == '' || credentials.lastName == '') {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Registro de usuario',
+        detail: 'Por favor complete los campos',
+      });
     } else {
-      await this._authservice
-        .signUp(credentials)
-        .then((res) => {
-          console.log(res);
+      if (this.options.id === 'sign-in') {
+        await this._authservice
+          .signIn(credentials)
+          .then((res) => {
+            console.log(res);
+            this.redirectUser();
+            this.response = res;
+          })
+          .catch(({ error }) => {
+            console.log(error);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Inicio de sesion',
+              detail: error.message,
+            });
+            return throwError(() => new Error(error));
+          });
+      } else {
+        await this._authservice
+          .signUp(credentials)
+          .then((res) => {
+            console.log(res);
 
-          this.redirectUser();
-          this.response = res;
-        })
-        .catch((error) => {
-          console.log(error);
+            this.redirectUser();
+            this.response = res;
+          })
+          .catch((error) => {
+            console.log(error);
 
-          return throwError(() => new Error(error));
-        });
+            return throwError(() => new Error(error));
+          });
+      }
     }
   }
 

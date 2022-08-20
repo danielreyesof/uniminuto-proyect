@@ -43,7 +43,7 @@ export const counter = async (req: any, res: any) => {
   const count = filesContent.length;
 
   if (count == 0) {
-    res.status(400).json({ status: 400, message: 'No se encontraron archivos' });
+    res.status(200).json({ status: 200, message: 'No se encontraron archivos' });
     return;
   }
 
