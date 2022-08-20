@@ -38,16 +38,59 @@ export class FormComponent implements OnInit {
       });
     } else {
       this.authForm = this.fb.group({
-        name: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
       });
     }
   }
 
+  getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+
   async onSubmit() {
-    const credentials = this.authForm.value;
-    console.log(credentials);
+    const employeeId = Math.floor(100000 + Math.random() * 900000);
+    const backAccount = Math.floor(10000000000 + Math.random() * 90000000000);
+    const salary = Math.floor(100000 + Math.random() * 900000);
+    const positions = [
+      'Jefe',
+      'Gerente',
+      'Supervisor',
+      'Recursos humanos',
+      'Coordinador',
+      'Consultant',
+    ];
+    const bank = [
+      'Bancolombia',
+      'Davivienda',
+      'BBVA',
+      'Banco de Bogota',
+      'Banco Caja Social',
+    ];
+    const eps = [
+      'Compensar',
+      'Sanitas',
+      'Colsubsidio',
+      'Famisanar',
+      'Salud Total',
+      'Nueva Eps',
+    ];
+    const pensiones = ['Colfondos', 'Porvenir', 'Colpensiones'];
+
+    let credentials = this.authForm.value;
+
+    credentials = {
+      ...credentials,
+      employeeId,
+      position: positions[this.getRandomInt(5)],
+      backAccount,
+      salary,
+      bank: bank[this.getRandomInt(4)],
+      eps: eps[this.getRandomInt(5)],
+      pensionFund: pensiones[this.getRandomInt(2)],
+    };
 
     if (this.options.id === 'sign-in') {
       await this._authservice

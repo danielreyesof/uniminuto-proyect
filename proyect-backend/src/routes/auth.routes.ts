@@ -7,6 +7,6 @@ import { authJwt, verifySignup } from './../middlewares';
 router.post('/signup', [verifySignup.checkDuplicatedEmail], authCtrl.signup);
 router.post('/signin', authCtrl.signin);
 router.post('/logout', authCtrl.logout);
-router.post('/verifytoken', authJwt.verifyToken);
+router.get('/verifytoken', authJwt.verifyToken);
 
 export default router;

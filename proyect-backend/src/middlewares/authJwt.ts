@@ -10,17 +10,21 @@ interface JwtPayload {
 let directoryBL = './../simulatedDatabases/bltokens.json';
 let directory = './../simulatedDatabases/users.json';
 
-export const verifyToken = async (req: any, res: any) => {
+export const verifyToken = async (req: any, res?: any) => {
   try {
     const token = req.headers['authorization'];
     if (!token) return res.status(403).json({ status: 403, message: 'No token provided' });
 
     const tokensJson = await readFileFs(directoryBL);
+    const count = tokensJson.length;
 
-    const blListed: [] = JSON.parse(tokensJson).filter((fil: any) => fil.token == token);
-    if (blListed.length >= 1) return res.status(403).json({ status: 403, message: 'This session does not exist' });
+    if (count != 0) {
+      const blListed: [] = JSON.parse(tokensJson).filter((fil: any) => fil.token == token);
+      if (blListed.length >= 1) return res.status(403).json({ status: 403, message: 'This session does not exist' });
+    }
 
     const decoded = jwt.verify(token, config.secret!) as JwtPayload;
+
     req.user_id = decoded.id;
 
     const usersJson = await readFileFs(directory);

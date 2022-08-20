@@ -9,22 +9,40 @@ let directory = './../simulatedDatabases/users.json';
 let directoryBL = './../simulatedDatabases/bltokens.json';
 
 export const signup = async (req: any, res: any) => {
-  console.log(req.body);
-
-  const { name, lastname, email, password, roles } = req.body;
-
-  let newUser = new Object({
-    _id: generateUUID(),
-    name,
-    lastname,
+  const {
+    firstName,
+    lastName,
     email,
+    password,
+    roles,
+    employeeId,
+    position,
+    backAccount,
+    salary,
+    bank,
+    eps,
+    pensionFund,
+  } = req.body;
+
+  let newUser = {
+    _id: generateUUID(),
+    firstName,
+    lastName,
+    email,
+    employeeId,
+    position,
+    backAccount,
+    salary,
+    bank,
+    eps,
+    pensionFund,
     password: await encryptPassword(password),
     roles,
     status: 1,
     date_create: Date.now(),
     date_update: Date.now(),
     date_delete: null,
-  });
+  };
 
   const fileContentsUsers: any = await readFileFs(directory);
   const count = fileContentsUsers.length;
@@ -40,7 +58,7 @@ export const signup = async (req: any, res: any) => {
     savedUser = await writeFileFs(directory, content);
   }
 
-  let token = jwt.sign({ id: savedUser._id }, config.secret!, {
+  let token = jwt.sign({ id: newUser._id }, config.secret!, {
     expiresIn: 86400,
   });
 
@@ -53,7 +71,9 @@ export const signin = async (req: any, res: any) => {
   const usersJson = await readFileFs(directory);
   const userFound = JSON.parse(usersJson).filter((fil: User) => fil.email == email);
 
-  if (!userFound) return res.status(400).json({ message: 'Incorrect email or password' });
+  if (userFound.length == 0) return res.status(400).json({ message: 'Incorrect email or password' });
+
+  console.log({ userFound });
 
   const matchPassword = await comparePassword(password, userFound[0].password);
   if (!matchPassword) return res.status(401).json({ token: null, message: 'Incorrect email or password' });
