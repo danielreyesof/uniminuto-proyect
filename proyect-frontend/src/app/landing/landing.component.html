@@ -1,7 +1,31 @@
-<div class="container-flex">
-  <div class="row">
-    <div class="col-12">
-      <app-topbar></app-topbar>
+<div class="main">
+  <div class="navbar">
+    <div class="icon">
+      <h2 class="logo">Jetta</h2>
+    </div>
+    <div class="menu">
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICE</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </div>
+    <div class="search">
+      <a [routerLink]="['/app', 'user', 'personal']"
+        ><button class="btn">Mi perfil</button></a
+      >
+    </div>
+    <div class="content">
+      <h1>Employment Service <br /><span>We help you</span> <br />to grow</h1>
+      <p class="par">
+        El 50% de población z quiere cambiar de empleo <br />
+        Jotta es una temporal de empleo que te ayudara buscar tú mejor trabajo
+        <br />
+        se parte de esta gran familia.!
+      </p>
+
+      <button class="cn"><a href="#">JOIN US</a></button>
     </div>
   </div>
 </div>

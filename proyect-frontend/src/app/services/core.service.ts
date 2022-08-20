@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CoreService {
-  // public urlServicesBD = 'http://localhost:4003/api';
-  public urlServicesBD = '/api';
+  public urlServicesBD = 'http://localhost:4003/api';
+  // public urlServicesBD = '/api';
 
   isLoading: boolean = false;
 

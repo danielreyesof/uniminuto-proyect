@@ -59,7 +59,7 @@ export const signup = async (req: any, res: any) => {
   }
 
   let token = jwt.sign({ id: newUser._id }, config.secret!, {
-    expiresIn: 86400,
+    expiresIn: 8640000,
   });
 
   res.status(200).json({ status: 201, token });
@@ -69,17 +69,20 @@ export const signin = async (req: any, res: any) => {
   const { email, password } = req.body;
 
   const usersJson = await readFileFs(directory);
+  if (usersJson.length == 0) return res.status(400).json({ message: 'No existe el usuario' });
+
   const userFound = JSON.parse(usersJson).filter((fil: User) => fil.email == email);
 
-  if (userFound.length == 0) return res.status(400).json({ message: 'Incorrect email or password' });
+  if (userFound.length == 0) return res.status(400).json({ message: 'Correo electronico o contraseña incorrecta' });
 
   console.log({ userFound });
 
   const matchPassword = await comparePassword(password, userFound[0].password);
-  if (!matchPassword) return res.status(401).json({ token: null, message: 'Incorrect email or password' });
+  if (!matchPassword)
+    return res.status(401).json({ token: null, message: 'Correo electronico o contraseña incorrecta' });
 
   const token = jwt.sign({ id: userFound[0]._id }, config.secret!, {
-    expiresIn: 86400,
+    expiresIn: 8640000,
   });
 
   res.status(200).json({ status: 200, token });
@@ -107,7 +110,7 @@ export const logout = async (req: { headers: { [x: string]: any } }, res: any) =
     savedTokens = await writeFileFs(directoryBL, content);
   }
 
-  res.status(200).json({ status: 200, message: 'Session ended' });
+  res.status(200).json({ status: 200, message: 'Sesion terminada' });
 };
 
 export const encryptPassword = async (password: string) => {

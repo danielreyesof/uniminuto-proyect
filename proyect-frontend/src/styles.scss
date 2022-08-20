@@ -1,11 +1,19 @@
 :root {
-  --primary-color: #0e0c5a;
-  --primary-100: #e3e2ff;
+  --primary-color: #ff7200ff;
+  --primary-100: rgb(255, 231, 217);
+  --primary-200: rgb(255, 152, 93);
   --primary-color-text: #ffffff;
-  --primary-color-hover: #232070;
-  --text-color: #0e0c5a;
-  --text-color-secondary: #6c757d;
+  --primary-color-hover: #a56124ff;
+  --text-color: #ff7200ff;
+  --text-color-secondary: #2f424dff;
 }
+
+// /* CSS HEX */
+// --gunmetal: #15232Cff;
+// --charcoal: #2F424Dff;
+// --dark-liver-horses: #5A4335ff;
+// --windsor-tan: #A56124ff;
+// --pumpkin: #FF7200ff;
 
 * {
   margin: 0;
@@ -41,7 +49,7 @@ body {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none;
 
-  color: #090831;
+  color: black;
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;

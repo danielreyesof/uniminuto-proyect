@@ -15,12 +15,13 @@ const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    canActivate: [AuthGuardIn],
     children: [
       { path: '', component: LandingComponent },
       {
         path: 'app',
         component: MainAppComponent,
+        canActivate: [AuthGuardIn],
+
         children: [
           {
             path: 'user',

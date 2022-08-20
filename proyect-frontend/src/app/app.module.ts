@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
 
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,8 +45,10 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     HttpClientModule,
     TableModule,
+    ToastModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

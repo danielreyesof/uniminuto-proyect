@@ -21,21 +21,22 @@
   width: 83vw;
 }
 
-.form-control {
-  border: 1px solid #d0d0d0;
+.button-cust {
+  border: none;
   appearance: none;
   padding: 12px;
-  background: #f7f7f7;
+  background: var(--primary-color);
+  color: #fff;
   border-radius: 10px;
-  margin-bottom: 20px;
-  width: 250px;
+  width: 100%;
   font-size: 0.8rem;
-  outline: none;
+  transition: 0.3s;
+  opacity: 1;
+  margin-bottom: 25px;
 
-  &:focus {
-    &::placeholder {
-      color: transparent;
-      transition: color 0.3s ease;
-    }
+  &:hover {
+    opacity: 0.9;
+    background: var(-primary-200);
+    cursor: pointer;
   }
 }
