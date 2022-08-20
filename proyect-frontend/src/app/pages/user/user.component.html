@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
   <div class="options">
     <div class="vertical-menu" style="width: 250px">
       <a
@@ -14,4 +14,25 @@
 
 <div>
   <router-outlet></router-outlet>
-</div>
+
+
+</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="row-12" style="height: 150px; width: 150px; text-align:center;">
+        <img class="image-user" src="./assets/user.jpg" alt="user">
+
+      </div>
+      <div class="row-12" style="border: 250px;">
+        <div class="vertical-menu" style="width: 220px">
+          <a *ngFor="let item of menuItems" [routerLink]="item.routerLink" [routerLinkActive]="'active'"
+            class="vertical-menu-item"><i class="{{ item.icon }}"></i>{{ item.label }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

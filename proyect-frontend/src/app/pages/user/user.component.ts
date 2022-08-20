@@ -18,11 +18,6 @@ export class UserComponent implements OnInit {
         label: 'Mis desprendibles',
         icon: '',
         routerLink: ['/app', 'user', 'detachables'],
-    },
-    {
-        label: 'Mis preferencias',
-        icon: '',
-        routerLink: ['/app', 'user', 'preferences'],
     }
 ];
 
