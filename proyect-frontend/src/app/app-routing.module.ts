@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    canActivate: [AuthGuardIn],
+    // canActivate: [AuthGuardIn],
     children: [
       { path: '', component: LandingComponent },
       {
@@ -47,12 +47,12 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: '**',
