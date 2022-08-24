@@ -30,8 +30,6 @@ export class PersonalDataComponent implements OnInit {
     this.initForm();
     await this.authService.verifyToken().subscribe({
       next: (res) => {
-        console.log(res);
-
         this.userData = res.user;
         this.personalDataForm = this.formBuilder.group({
           firstName: [this.userData.firstName],

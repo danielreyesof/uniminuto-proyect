@@ -1,5 +1,5 @@
 import { FilesService } from './../../../services/files.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver-es';
 import { BehaviorSubject } from 'rxjs';
 
@@ -10,11 +10,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DetachablesComponent implements OnInit {
   cols: any[] = [];
-  filesData = [];
+  filesData: any = [];
   virtualFilesData = new BehaviorSubject<any[]>([] as any);
   selectedFiles: any[] = [];
+  showSpinner: boolean = false;
+  showGenerate: boolean = true;
 
-  constructor(private filesService: FilesService) {
+  constructor(
+    private filesService: FilesService,
+    private ref: ChangeDetectorRef
+  ) {
     this.getData();
   }
 
@@ -26,17 +31,21 @@ export class DetachablesComponent implements OnInit {
     ];
   }
 
-  getData() {
-    this.filesService.getUpload().then((data: any) => {
-      this.filesData = data.filesContent;
-      this.virtualFilesData.next(...([this.filesData] as const));
+  async getData() {
+    await this.filesService.getUpload().then((data: any) => {
+      console.log(data);
+
+      if (!data.filesContent) {
+        this.filesData = [];
+      } else {
+        this.filesData = [...data.filesContent];
+      }
     });
   }
 
   downloadFile(rowData: any) {
     this.filesService.downloadFile(rowData._id).subscribe({
       next: (response: any) => {
-        console.log([response]);
         let blob = new Blob([response], {});
         saveAs(blob, rowData.fileName);
       },
@@ -46,7 +55,10 @@ export class DetachablesComponent implements OnInit {
     });
   }
 
-  generatePDF() {
+  async generatePDF() {
+    this.showSpinner = true;
+    this.showGenerate = false;
+
     let data = [
       {
         id: 1,
@@ -80,9 +92,23 @@ export class DetachablesComponent implements OnInit {
       },
     ];
 
-    this.filesService.generateFiles(data).then((res: any) => {
+    await this.filesService.generateFiles(data).then((res: any) => {
+      console.log(res);
+
       if (res.status == 200) {
-        this.getData();
+        setTimeout(() => {
+          this.filesService.getUpload().then((data: any) => {
+            console.log(data);
+            if (!data.filesContent) {
+              this.filesData = [];
+            } else {
+              this.filesData = [...data.filesContent];
+            }
+
+            this.showSpinner = false;
+            this.showGenerate = true;
+          });
+        }, 100);
       }
     });
   }

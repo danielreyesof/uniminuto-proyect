@@ -13,7 +13,13 @@
     <div class="m-0 py-4">
       <div class="px-4 col-12">
         <button type="submit" class="btn button-cust" (click)="generatePDF()">
-          Generar desprendibles
+          <div>
+            <p-progressSpinner
+              *ngIf="showSpinner"
+              [style]="{ width: '25px', height: '25px' }"
+            ></p-progressSpinner>
+          </div>
+          <div *ngIf="showGenerate">Generar desprendibles</div>
         </button>
       </div>
       <div class="px-4 col-12">

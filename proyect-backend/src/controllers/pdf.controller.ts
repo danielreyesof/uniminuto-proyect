@@ -16,7 +16,7 @@ export const generate = async (req: any, res: any) => {
   let uid = generateUUID();
   const token = req.headers['authorization'];
 
-  const { status, message, user }: any = await makeCall(token);
+  const { user }: any = await makeCall(token);
 
   console.log(user);
 
@@ -39,18 +39,16 @@ export const generate = async (req: any, res: any) => {
 
   let savedFile: any;
 
-  pdf.create(html, options).toFile(fullpath, async function (_err, res) {
+  pdf.create(html, options).toFile(fullpath, async function () {
     if (count == 0) {
-      console.log(res.filename);
-
       savedFile = await writeFileFs(directoryFiles, [fileinfo]);
+      res.status(200).json({ status: 200, test: fullpath });
     } else {
       let content: any = await readFileFs(directoryFiles);
       content = JSON.parse(content);
       content.push(fileinfo);
       savedFile = await writeFileFs(directoryFiles, content);
+      res.status(200).json({ status: 200, test: fullpath });
     }
   });
-
-  res.status(200).json({ status: 200, test: fullpath });
 };

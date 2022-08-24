@@ -8,13 +8,6 @@
   --text-color-secondary: #2f424dff;
 }
 
-// /* CSS HEX */
-// --gunmetal: #15232Cff;
-// --charcoal: #2F424Dff;
-// --dark-liver-horses: #5A4335ff;
-// --windsor-tan: #A56124ff;
-// --pumpkin: #FF7200ff;
-
 * {
   margin: 0;
   padding: 0;
@@ -22,12 +15,7 @@
     Roboto, Arial, sans-serif;
 }
 
-// * {
-//   font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
-// }
-
 a {
-  color: black;
   text-decoration: none;
 }
 
@@ -44,9 +32,9 @@ body {
 }
 
 .vertical-menu .vertical-menu-item {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 
   color: black;
@@ -59,11 +47,6 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
-  // text-decoration: none;
-  // padding: 1rem 1rem;
-  // border-bottom: 1px solid #ccc;
-  // transition: all 0.5s;
 }
 
 .vertical-menu .vertical-menu-item i {

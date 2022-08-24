@@ -1,25 +1,3 @@
-.options {
-  margin-top: 2rem;
-  border-radius: 0.5rem;
-  background: #fff;
-  font-size: 95%;
-}
-
-.options .option {
-  display: grid;
-  height: 2rem;
-  cursor: pointer;
-  padding: 8px 0.5rem;
-  border-radius: 0.5rem;
-  align-items: center;
-  background-color: #fff;
-  width: 100%;
-}
-
-.options .option:hover {
-  background: #e3e2ff;
-}
-
 .container {
   margin: 0;
   padding: 0;
