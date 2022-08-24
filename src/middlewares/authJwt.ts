@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from './../config';
+import config from '../../config';
 import { User } from './../interfaces/global';
 import { readFileFs } from './../utils/readWriteFile';
 

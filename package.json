@@ -2,11 +2,11 @@
   "name": "backend-service",
   "version": "1.0.0",
   "description": "Login, Sign up and download service",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev index.ts"
   },
   "keywords": [],
   "author": "Group 9",
@@ -32,6 +32,7 @@
     "html-pdf": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "os": "^0.1.2",
     "pdf-creator-node": "^2.3.5"
   }
 }

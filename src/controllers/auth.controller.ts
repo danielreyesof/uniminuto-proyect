@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { readFileFs, writeFileFs } from '../utils/readWriteFile';
 import jwt from 'jsonwebtoken';
-import config from './../config';
+import config from '../../config';
 import { generateUUID } from './../utils/generateUUID';
 import { User } from './../interfaces/global';
 

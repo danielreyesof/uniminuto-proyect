@@ -1,11 +1,11 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import pkg from '../package.json';
-import { readFile } from './libs/initialSetup';
-import authRoutes from './routes/auth.routes';
-import pdfRoutes from './routes/pdf.routes';
-import filesRoutes from './routes/files.routes';
+import pkg from './package.json';
+import { readFile } from './src/libs/initialSetup';
+import authRoutes from './src/routes/auth.routes';
+import pdfRoutes from './src/routes/pdf.routes';
+import filesRoutes from './src/routes/files.routes';
 
 const app = express();
 readFile();
