@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserInfo } from 'src/app/shared/interfaces/authForm';
 
@@ -23,7 +25,10 @@ export class UserComponent implements OnInit {
 
   userData: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.authService.verifyToken().subscribe((res: any) => {
@@ -33,5 +38,16 @@ export class UserComponent implements OnInit {
     });
 
     // console.log(this.userData);
+  }
+
+  async onLogout(): Promise<void> {
+    await this.authService
+      .signOut()
+      .then((res: any) =>
+        res.status == 201
+          ? this.router.navigate(['/sign-in'])
+          : this.router.navigate(['/home'])
+      )
+      .catch((error) => throwError(() => new Error(error)));
   }
 }
