@@ -4,7 +4,7 @@ import { readFileFs } from '../utils/readWriteFile';
 import makeCall from '../utils/validateTojen';
 
 let directoryFiles = './../simulatedDatabases/files.json';
-let directoryFilesTemp = 'C:/Users/kevin/Desktop/uniminuto-proyect/proyect-backend/src/temp/';
+let directoryFilesTemp = path.join(__dirname, '../temp');
 
 export const download = async (req: any, res: any) => {
   const token = req.headers['authorization'];
