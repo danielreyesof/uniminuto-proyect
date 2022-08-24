@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CoreService {
-  public urlServicesBD = 'http://localhost:4003/api';
+  public urlServicesBD = 'https://backend-uniminuto-project.herokuapp.com/api';
   // public urlServicesBD = '/api';
 
   isLoading: boolean = false;
