@@ -1,8 +1,0 @@
-node_modules
-
-.env
-
-*lock.json
-
-# ignore all logs
-*.log
