@@ -8,7 +8,6 @@ import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 import { UserComponent } from './pages/user/user.component';
 import { DetachablesComponent } from './pages/user/detachables/detachables.component';
 import { PersonalDataComponent } from './pages/user/personal-data/personal-data.component';
-import { PreferencesComponent } from './pages/user/preferences/preferences.component';
 import { MainAppComponent } from './pages/main-app/main-app.component';
 
 const routes: Routes = [
@@ -34,10 +33,6 @@ const routes: Routes = [
               {
                 path: 'personal',
                 component: PersonalDataComponent,
-              },
-              {
-                path: 'preferences',
-                component: PreferencesComponent,
               },
             ],
           },

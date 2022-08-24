@@ -70,21 +70,6 @@ export class FilesService {
   }
 
   public generateFiles(data: any) {
-    // const options = {
-    //   headers: new HttpHeaders().append('authorization', `${this.setUser()}`),
-    // };
-
-    // return this.http
-    //   .post<UserInfo>(
-    //     `${this._coreService.urlServicesBD}/pdf/generate`,
-    //     data,
-    //     options
-    //   )
-    //   .pipe((data) => {
-    //     data.subscribe((d) => (this.filesData = d));
-    //     return data;
-    //   });
-
     let vm = this;
     return new Promise(function (resolve, reject) {
       vm._db.addService('pdf/generate', data).subscribe((data: any) => {

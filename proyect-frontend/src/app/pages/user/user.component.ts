@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserInfo } from 'src/app/shared/interfaces/authForm';
 
 @Component({
   selector: 'app-user',
@@ -32,12 +31,8 @@ export class UserComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.authService.verifyToken().subscribe((res: any) => {
-      console.log(res);
-
       this.userData = res.user;
     });
-
-    // console.log(this.userData);
   }
 
   async onLogout(): Promise<void> {

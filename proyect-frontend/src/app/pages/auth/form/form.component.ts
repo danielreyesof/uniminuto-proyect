@@ -1,4 +1,3 @@
-import { readFiles } from './../../../shared/file';
 import { TypeForm } from './../../../shared/interfaces/authForm';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,8 +17,6 @@ export class FormComponent implements OnInit {
 
   response: any;
 
-  public readFiles = readFiles;
-
   constructor(
     private readonly fb: FormBuilder,
     private _authservice: AuthService,
@@ -29,7 +26,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.readFiles();
   }
 
   private initForm(): void {
@@ -93,7 +89,6 @@ export class FormComponent implements OnInit {
       eps: eps[this.getRandomInt(5)],
       pensionFund: pensiones[this.getRandomInt(2)],
     };
-    console.log(credentials);
 
     if (credentials.firstName == '' || credentials.lastName == '') {
       this.messageService.add({
@@ -106,7 +101,6 @@ export class FormComponent implements OnInit {
         await this._authservice
           .signIn(credentials)
           .then((res) => {
-            console.log(res);
             this.redirectUser();
             this.response = res;
           })
@@ -123,8 +117,6 @@ export class FormComponent implements OnInit {
         await this._authservice
           .signUp(credentials)
           .then((res) => {
-            console.log(res);
-
             this.redirectUser();
             this.response = res;
           })
