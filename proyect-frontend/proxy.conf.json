@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:4003",
+    "target": "https://backend-uniminuto-project.herokuapp.com/",
     "secure": false,
     "logLevel": "debug"
   }
