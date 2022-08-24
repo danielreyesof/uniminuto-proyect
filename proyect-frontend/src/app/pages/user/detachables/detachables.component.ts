@@ -1,6 +1,6 @@
 import { FilesService } from './../../../services/files.service';
 import { Component, OnInit } from '@angular/core';
-import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver-es';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

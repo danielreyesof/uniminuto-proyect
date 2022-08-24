@@ -9,6 +9,10 @@ let directoryFilesTemp = path.join(__dirname, '../temp');
 export const download = async (req: any, res: any) => {
   const token = req.headers['authorization'];
 
+  if (!token) return res.status(403).json({ status: 403, message: 'No token provided' });
+
+  console.log(token);
+
   const { status, message, user }: any = await makeCall(token);
 
   const { _id } = req.query;
@@ -37,12 +41,14 @@ export const download = async (req: any, res: any) => {
 export const counter = async (req: any, res: any) => {
   const token = req.headers['authorization'];
 
-  const { status, message, user }: any = await makeCall(token);
+  const { user }: any = await makeCall(token);
 
   let filesContent: any = await readFileFs(directoryFiles);
   const count = filesContent.length;
 
-  if (count == 0) {
+  console.log(count);
+
+  if (count <= 50) {
     res.status(200).json({ status: 200, message: 'No se encontraron archivos' });
     return;
   }

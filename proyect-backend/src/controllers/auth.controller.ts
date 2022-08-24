@@ -59,7 +59,7 @@ export const signup = async (req: any, res: any) => {
   }
 
   let token = jwt.sign({ id: newUser._id }, config.secret!, {
-    expiresIn: 8640000,
+    expiresIn: 31536000,
   });
 
   res.status(200).json({ status: 201, token });
@@ -82,7 +82,7 @@ export const signin = async (req: any, res: any) => {
     return res.status(401).json({ token: null, message: 'Correo electronico o contraseña incorrecta' });
 
   const token = jwt.sign({ id: userFound[0]._id }, config.secret!, {
-    expiresIn: 8640000,
+    expiresIn: 31536000,
   });
 
   res.status(200).json({ status: 200, token });
