@@ -5,11 +5,10 @@ export default (pdf_data: any, user: any) => {
   const today = new Date();
 
   return `<!DOCTYPE html>
-  <html lang="en">
+  <html lang="es">
     <head>
       <meta charset="utf-8" />
       <title>Jotta</title>
-      <link rel="stylesheet" href="style.css" media="all" />
       <style>
         .clearfix:after {
           content: '';
@@ -33,7 +32,12 @@ export default (pdf_data: any, user: any) => {
           font-size: 12px;
           font-family: Arial;
         }
-  
+        .contenedor {
+          width: 80%;
+          max-width: 1000px;
+          margin: 0 auto;
+          overflow: hidden;
+        }
         header {
           padding: 10px 0;
           margin-bottom: 30px;
@@ -57,7 +61,7 @@ export default (pdf_data: any, user: any) => {
           font-weight: normal;
           text-align: center;
           margin: 0 0 20px 0;
-          background: url(./dimension.png);
+          background: url(dimension.png);
         }
   
         #project {
@@ -87,7 +91,7 @@ export default (pdf_data: any, user: any) => {
           width: 100%;
           border-collapse: collapse;
           border-spacing: 0;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
   
         table tr:nth-child(2n-1) td {
@@ -140,117 +144,151 @@ export default (pdf_data: any, user: any) => {
         footer {
           color: #5d6975;
           width: 100%;
-          height: 10px;
+          height: 30px;
           position: absolute;
-          margin-top: 100px;
+          bottom: 0;
           border-top: 1px solid #c1ced9;
-          padding: 5px 0;
+          padding: 8px 0;
           text-align: center;
         }
-      </style>
-    </head>
-    <body>
-      <header class="clearfix">
-        <div id="logo">
-          <img src="./logo.jpg" />
-        </div>
-        <h1>DESPRENDIBLE NOMINA</h1>
-        <div id="company" class="clearfix">
-          <div>Jotta</div>
-          <div>
-            NIT,<br />
-            901039094-1
-          </div>
-          <div>(601) 381-9648</div>
-          <div><a>${email}</a></div>
-        </div>
-        <div id="project">
-          <div><span>Nombre</span> ${firstName} ${lastName}</div>
-          <div><span>Empleado</span> ${employeeId}</div>
-          <div><span>Cargo</span> ${position}</div>
-          <div><span>Email</span> ${email}</div>
-          <div><span>Banco</span> ${bank}</div>
-          <div><span>Cuenta</span> ${backAccount}</div>
-        </div>
-      </header>
-      <main>
-        <table>
-          <thead>
-            <tr>
-              <th class="service">Codigo</th>
-              <th class="desc">Concepto</th>
-              <th>Cant</th>
-              <th>Pago</th>
-              <th>Descuento</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="service">11019</td>
-              <td class="desc">RERCAGO DIURNO</td>
-              <td class="unit">41</td>
-              <td class="qty">$331,548</td>
-            </tr>
-            <tr>
-              <td class="service">17004</td>
-              <td class="desc">AUXILIO DE TRANSPORTE</td>
-              <td class="unit">30</td>
-              <td class="qty">$117,172</td>
-            </tr>
-            <tr>
-              <td class="service">11001</td>
-              <td class="desc">SUELDO ORDINARIO</td>
-              <td class="unit">30</td>
-              <td class="qty">$1,109,010</td>
-            </tr>
-            <tr>
-              <td class="service">22501</td>
-              <td class="desc">OBLIGATORIO SALUD</td>
-              <td class="unit"></td>
-              <td class="qty"></td>
-              <td class="total">$57,700</td>
-            </tr>
-            <tr>
-              <td class="service">26601</td>
-              <td class="desc">OBLIGATORIO PENSION</td>
-              <td class="unit"></td>
-              <td class="qty"></td>
-              <td class="total">$57,700</td>
-            </tr>
-            <tr>
-              <td class="service">24239</td>
-              <td class="desc">DCTO APORTE FESOC CARTERA</td>
-              <td class="unit"></td>
-              <td class="qty"></td>
-              <td class="total">$233,331</td>
-            </tr>
-            <tr>
-              <td class="service">24238</td>
-              <td class="desc">DCTO APORTE FESOC CARTERA</td>
-              <td class="unit"></td>
-              <td class="qty"></td>
-              <td class="total">$33,000</td>
-            </tr>
-            <tr>
-              <td colspan="4">TOTAL Y PAGO DESCUENTO</td>
-              <td class="total">$1,557,730</td>
-            </tr>
   
-            <tr>
-              <td colspan="4" class="grand total">NETO</td>
-              <td class="grand total">${salary}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="notices">
-          <div>NOTICE:</div>
-          <div class="notice">Desprendible Liquidación.</div>
-        </div>
-      </main>
-      <footer>JOTTA</footer>
+        @media screen and(max-width: 800px) {
+          .body {
+            width: 100%;
+          }
+  
+          .footer {
+            width: 100%;
+          }
+  
+          .table {
+            width: 100%;
+          }
+  
+          .table td {
+            width: 100%;
+          }
+  
+          .table th {
+            width: 100%;
+          }
+  
+          .tale tr {
+            width: 100%;
+          }
+        }
+      </style>
+      <script>
+        function random() {
+          document.getElementById('one').innerHTML = Math.floor(Math.random() * 100);
+          document.getElementById('tow').innerHTML = Math.floor(Math.random() * 100);
+          document.getElementById('three').innerHTML = Math.floor(Math.random() * 100);
+        }
+      </script>
+    </head>
+    <body onload="random();">
+      <div class="contenedor">
+        <header class="clearfix">
+          <div id="logo">
+            <img src="logo.jpg" />
+          </div>
+          <h1>DESPRENDIBLE NOMINA</h1>
+          <div id="company" class="clearfix">
+            <div>Jotta</div>
+            <div>
+              NIT,<br />
+              901039094-1
+            </div>
+            <div>(601) 381-9648</div>
+            <div>${email}</div>
+          </div>
+          <div id="project">
+            <div><span>Nombre</span> ${firstName} ${lastName}</div>
+            <div><span>Empleado</span> ${employeeId}</div>
+            <div><span>Cargo</span> ${position}</div>
+            <div><span>Email</span> ${email}</div>
+            <div><span>Banco</span> ${bank}</div>
+            <div><span>Cuenta</span> ${backAccount}</div>
+          </div>
+        </header>
+        <main>
+          <table>
+            <thead>
+              <tr>
+                <th class="service">Codigo</th>
+                <th class="desc">Concepto</th>
+                <th>Cant</th>
+                <th>Pago</th>
+                <th>Descuento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="service">11019</td>
+                <td class="desc">RERCAGO DIURNO</td>
+                <td class="unit"><p id="one"></p></td>
+                <td class="qty">$331,548</td>
+              </tr>
+              <tr>
+                <td class="service">17004</td>
+                <td class="desc">AUXILIO DE TRANSPORTE</td>
+                <td class="unit"><p id="tow"></p></td>
+                <td class="qty">$117,172</td>
+              </tr>
+              <tr>
+                <td class="service">11001</td>
+                <td class="desc">SUELDO ORDINARIO</td>
+                <td class="unit"><p id="three"></p></td>
+                <td class="qty">$1,109,010</td>
+              </tr>
+              <tr>
+                <td class="service">22501</td>
+                <td class="desc">OBLIGATORIO SALUD</td>
+                <td class="unit"></td>
+                <td class="qty"></td>
+                <td class="total">$57,700</td>
+              </tr>
+              <tr>
+                <td class="service">26601</td>
+                <td class="desc">OBLIGATORIO PENSION</td>
+                <td class="unit"></td>
+                <td class="qty"></td>
+                <td class="total">$57,700</td>
+              </tr>
+              <tr>
+                <td class="service">24239</td>
+                <td class="desc">DCTO APORTE FESOC CARTERA</td>
+                <td class="unit"></td>
+                <td class="qty"></td>
+                <td class="total">$233,331</td>
+              </tr>
+              <tr>
+                <td class="service">24238</td>
+                <td class="desc">DCTO APORTE FESOC CARTERA</td>
+                <td class="unit"></td>
+                <td class="qty"></td>
+                <td class="total">$33,000</td>
+              </tr>
+              <tr>
+                <td colspan="4">TOTAL Y PAGO DESCUENTO</td>
+                <td class="total">$1,557,730</td>
+              </tr>
+  
+              <tr>
+                <td colspan="4" class="grand total">NETO</td>
+                <td class="grand total">$1,175,999</td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">Desprendible Nomina.</div>
+          </div>
+        </main>
+        <footer>JOTTA</footer>
+      </div>
     </body>
   </html>
-  
   
   `;
 };

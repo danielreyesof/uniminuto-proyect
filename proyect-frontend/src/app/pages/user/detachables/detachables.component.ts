@@ -1,6 +1,7 @@
 import { FilesService } from './../../../services/files.service';
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-detachables',
@@ -10,6 +11,7 @@ import { saveAs } from 'file-saver';
 export class DetachablesComponent implements OnInit {
   cols: any[] = [];
   filesData = [];
+  virtualFilesData = new BehaviorSubject<any[]>([] as any);
   selectedFiles: any[] = [];
 
   constructor(private filesService: FilesService) {
@@ -27,6 +29,7 @@ export class DetachablesComponent implements OnInit {
   getData() {
     this.filesService.getUpload().then((data: any) => {
       this.filesData = data.filesContent;
+      this.virtualFilesData.next(...([this.filesData] as const));
     });
   }
 
