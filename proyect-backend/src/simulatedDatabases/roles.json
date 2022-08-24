@@ -1,1 +1,34 @@
-[{"_id":"29BC650B-DCAE-4B9B-B0FD-0E2EC78DD018","name":"client","status":1,"date_create":1661301075347,"date_update":1661301075347,"date_delete":null},{"_id":"02EB9BD8-4BCB-4735-B3C6-AA31EEC3E051","name":"admin","status":1,"date_create":1661301075347,"date_update":1661301075347,"date_delete":null},{"_id":"62A21E17-848B-450A-96E8-A475B4A794C4","name":"employee","status":1,"date_create":1661301075347,"date_update":1661301075347,"date_delete":null},{"_id":"1CC9714E-7391-4AE6-B44A-FC14656B1787","name":"developer","status":1,"date_create":1661301075347,"date_update":1661301075347,"date_delete":null}]
+[
+  {
+    "_id": "29BC650B-DCAE-4B9B-B0FD-0E2EC78DD018",
+    "name": "client",
+    "status": 1,
+    "date_create": 1661301075347,
+    "date_update": 1661301075347,
+    "date_delete": null
+  },
+  {
+    "_id": "02EB9BD8-4BCB-4735-B3C6-AA31EEC3E051",
+    "name": "admin",
+    "status": 1,
+    "date_create": 1661301075347,
+    "date_update": 1661301075347,
+    "date_delete": null
+  },
+  {
+    "_id": "62A21E17-848B-450A-96E8-A475B4A794C4",
+    "name": "employee",
+    "status": 1,
+    "date_create": 1661301075347,
+    "date_update": 1661301075347,
+    "date_delete": null
+  },
+  {
+    "_id": "1CC9714E-7391-4AE6-B44A-FC14656B1787",
+    "name": "developer",
+    "status": 1,
+    "date_create": 1661301075347,
+    "date_update": 1661301075347,
+    "date_delete": null
+  }
+]
